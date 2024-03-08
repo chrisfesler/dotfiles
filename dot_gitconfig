@@ -1,0 +1,35 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+  name = Chris Fesler
+  email = cfesler@nutshelllabs.io
+[credential]
+  helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[branch]
+  autosetuprebase = always
+[pull]
+  rebase = true
+[fetch]
+  all = true
+  prune = true
+  pruneTags = true
+  recurseSubmodules = true
+[submodule]
+  recurse = true
+
+[alias]
+  cleanup = "!git branch --merged | grep -v '*' | grep -v '(master|main)' | (xargs -n 1 git branch -d 2>/dev/null || echo 'no branches to clean up')"
+
+[alias]
+  docs = checkout -b cf/OAK-34-doc-updates
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[core]
+	excludesfile = /Users/cfesler/.gitignore_global
