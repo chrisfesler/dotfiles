@@ -5,8 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-export EDITOR=nvim
-
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
 
@@ -33,8 +31,15 @@ source $HOME/.zshenv
 
 export oak="$HOME/src/nuts/oak" # convenience on the CLI
 alias oak='cd "$oak"'
+export EDITOR=nvim
 alias vim='nvim'
 alias vi='nvim'
+alias cm='chezmoi'
+alias cme='chezmoi edit'
+alias cmez="chezmoi edit ${HOME}/.zshrc"
+alias cma='chezmoi apply'
+
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source /opt/homebrew/opt/powerlevel10k/share/powerlevel10k/powerlevel10k.zsh-theme
 source "/Users/cfesler/.sdkman/bin/sdkman-init.sh"
@@ -46,14 +51,6 @@ source /Users/cfesler/secrets/openai_api_key.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 set -o vi
-
-# node madness
-#eval "$(fnm env --use-on-cd)"
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/cfesler/apps/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cfesler/apps/google-cloud-sdk/path.zsh.inc'; fi
