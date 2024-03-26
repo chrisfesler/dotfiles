@@ -91,3 +91,13 @@ fi
 zle -N _sgpt_zsh
 bindkey ^l _sgpt_zsh
 # Shell-GPT integration ZSH v0.2
+
+# fnm
+eval "$(fnm env --use-on-cd)"
+# pnpm
+export PNPM_HOME="/Users/cfesler/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
