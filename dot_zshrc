@@ -38,6 +38,7 @@ alias cm='chezmoi'
 alias cme='chezmoi edit'
 alias cmez="chezmoi edit ${HOME}/.zshrc"
 alias cma='chezmoi apply'
+alias glog="g lg"
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
@@ -46,6 +47,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # egpt / dgpt
 source $HOME/secrets/openai_api_key.sh
+source $HOME/secrets/jira_api_key.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
