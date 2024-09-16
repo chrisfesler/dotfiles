@@ -24,7 +24,7 @@
 
 [alias]
   docs = checkout -b cf/OAK-34-doc-updates
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cd) %C(yellow)%d%Creset %s %C(bold blue)%an%Creset' --date=rfc-local --abbrev-commit --all -8
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cd) %C(yellow)%d%Creset %s %C(bold blue)%an%Creset' --date=rfc-local --abbrev-commit -8
 
 [filter "lfs"]
 	process = git-lfs filter-process
