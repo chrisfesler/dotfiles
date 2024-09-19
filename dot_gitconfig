@@ -33,6 +33,22 @@
 	smudge = git-lfs smudge -- %f
 
 [core]
-	excludesfile = /Users/cfesler/.gitignore_global
-  pager = less -iXR
+    excludesfile = /Users/cfesler/.gitignore_global
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[include]
+  path = $HOME/src/oss/catpuccin/delta/themes/catppuccin.gitconfig
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    features = catppuccin-macchiato
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
 
