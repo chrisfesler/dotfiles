@@ -19,12 +19,12 @@ plugins=(
   gcloud
   git
   terraform
+  you-should-use
   z
   zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-eza
   zsh-bat
-  you-should-use
+  zsh-eza
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -42,9 +42,11 @@ alias cm='chezmoi'
 alias cme='chezmoi edit'
 alias cmez="chezmoi edit ${HOME}/.zshrc"
 alias cma='chezmoi apply'
+alias cmcd='cd "$(chezmoi source-path)"'
 alias glog="g lg"
 alias ds="$oak/tools/localdev/docker_stop.sh"
 alias de="$oak/tools/localdev/docker_ensure.sh"
+alias '?'='bc -le'
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
