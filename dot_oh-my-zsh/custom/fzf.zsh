@@ -12,7 +12,6 @@ export FZF_DEFAULT_OPTS="\
   --reverse \
   --multi \
   --info=inline \
-  --preview='if [ -d {} ]; then tree -C -L 2 {}; elif [ -f {} ]; then bat -f --style=numbers {}; fi' \
   --preview-window='right:60%:wrap,<50(bottom,50%)' \
   --history='$HOME/.fzf_history' --history-size=50 \
   --bind='f3:execute(bat --style=numbers {} || less -f {})' \
@@ -31,15 +30,15 @@ export FZF_CTRL_T_OPTS="--preview='if [ -d {} ]; then tree -C -L 2 {}; elif [ -f
 
 # CTRL-R - Paste the selected command from history onto the command-line
 # CTRL-Y to copy the command into clipboard using pbcopy
-# export FZF_CTRL_R_OPTS="
-#   --height 60%
-#   --preview-window='bottom:3:wrap:border-top,<50(bottom:3:wrap:border-top)'
-#   --with-nth '2..'
-#   --preview 'echo {2..}'
-#   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
-#   --bind 'change:first'
-#   --color header:italic
-#   --header 'Press CTRL-Y to copy command into clipboard'"
+export FZF_CTRL_R_OPTS="
+  --height 60%
+  --preview-window='bottom:3:wrap:border-top,<50(bottom:3:wrap:border-top)'
+  --with-nth '2..'
+  --preview 'echo {2..}'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --bind 'change:first'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
 
 # Override built-in 'cd' shell command to show all subdirs in fzf if called without args (like ALT+C does)
 # Alt-C, cd into the selected directory
