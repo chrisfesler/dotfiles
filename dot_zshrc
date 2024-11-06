@@ -77,7 +77,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # fnm
-eval "$(fnm env --use-on-cd)"
+if command -v fnm &> /dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
