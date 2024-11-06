@@ -52,3 +52,5 @@
 [diff]
     colorMoved = default
 
+[credential "https://github.com"]
+	username = chrisfesler
