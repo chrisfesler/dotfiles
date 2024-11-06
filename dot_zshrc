@@ -102,5 +102,10 @@ zle -N _sgpt_zsh
 bindkey ^g _sgpt_zsh
 # End Shell-GPT integration ZSH v0.2
 
-eval "$(starship init zsh)"
+# Check that the function `starship_zle-keymap-select()` is defined.
+# xref: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null || \
+  {
+    eval "$(starship init zsh)"
+  }
 
