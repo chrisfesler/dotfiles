@@ -5,10 +5,10 @@
   email = cfesler@nutshelllabs.io
 [credential]
   helper = osxkeychain
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+  helper = /usr/local/share/gcm-core/git-credential-manager
 [branch]
   autosetuprebase = always
+  sort = committerdate
 [pull]
   rebase = true
 [fetch]
@@ -21,10 +21,12 @@
 
 [alias]
   cleanup = "!git branch --merged | grep -v '*' | grep -v '(master|main)' | (xargs -n 1 git branch -d 2>/dev/null || echo 'no branches to clean up')"
-
-[alias]
   docs = checkout -b cf/OAK-34-doc-updates
   lg = log --color --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cd) %C(yellow)%d%Creset %s %C(bold blue)%an%Creset' --date=rfc-local --abbrev-commit -8
+  push = push --force-with-lease
+  diff = diff —word-diff
+  blame = blame -w -C -C -C
+  bb = "!$HOME/bin/better_git_branch.sh"
 
 [filter "lfs"]
 	process = git-lfs filter-process
@@ -54,3 +56,9 @@
 
 [credential "https://github.com"]
 	username = chrisfesler
+[column]
+	ui = auto
+[rerere]
+	enabled = true
+[maintenance]
+	repo = /Users/cfesler/src/nuts/oak
