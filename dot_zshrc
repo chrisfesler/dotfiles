@@ -1,6 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # one place to set up PATH
-export PATH="${HOME}/bin:${HOME}/.local/bin:/opt/homebrew/bin:${PATH}"
+export PATH="${HOME}/bin:${HOME}/.local/bin:${PATH}"
+if [[ "$(uname)" == "Darwin" ]]; then
+  export PATH="/opt/homebrew/bin:/opt/homebrew/opt/ruby/bin:$PATH"
+elif [[ "$(uname)" == "Linux" ]]; then
+  # ToDo
+fi
+
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -39,6 +45,7 @@ alias cmcd='cd "$(chezmoi source-path)"'
 alias ds="$oak/tools/localdev/docker_stop.sh"
 alias de="$oak/tools/localdev/docker_ensure.sh"
 alias '?'='bc -le'
+alias be='bundle exec'
 
 # git aliases
 alias g=git
