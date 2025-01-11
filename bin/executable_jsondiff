@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Parse arguments
+pretty_print=false
+output_format=""
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --yaml)
+            output_format="yaml"
+            shift
+            ;;
+        --json)
+            output_format="json"
+            shift
+            ;;
+        --pretty)
+            pretty_print=true
+            shift
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: jsondiff [--yaml|--json] [--pretty] <file1> <file2>"
+    exit 1
+fi
+
+# If no format specified, use extension of first file
+if [ -z "$output_format" ]; then
+    if [[ "$1" =~ \.json$ ]]; then
+        output_format="json"
+    else
+        output_format="yaml"
+    fi
+fi
+
+format_file() {
+    local file="$1"
+    local tmp
+    
+    if [ "$pretty_print" = true ]; then
+        if [ "$output_format" = "json" ]; then
+            yq -o=json -P 'sort_keys(..)' < "$file"
+        else
+            yq -o=yaml -P 'sort_keys(..)' < "$file"
+        fi
+    else
+        # Convert to JSON first to ensure consistent sorting
+        tmp=$(yq -o=json 'sort_keys(..)' < "$file")
+        if [ "$output_format" = "json" ]; then
+            echo "$tmp" | jq -c '.'
+        else
+            echo "$tmp" | jq -c '.' | yq -p=json 'sort_keys(..)' -o=yaml
+        fi
+    fi
+}
+
+difft <(format_file "$1") <(format_file "$2")
