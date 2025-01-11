@@ -23,7 +23,7 @@
   cleanup = "!git branch --merged | grep -v '*' | grep -v '(master|main)' | (xargs -n 1 git branch -d 2>/dev/null || echo 'no branches to clean up')"
   docs = checkout -b cf/OAK-34-doc-updates
   lg = log --color --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cd) %C(yellow)%d%Creset %s %C(bold blue)%an%Creset' --date=rfc-local --abbrev-commit -8
-  diff = diff —word-diff
+  diff = diff —word-diff --ws-error-highlight=all
   blame = blame -w -C -C -C
   bb = "!$HOME/bin/better_git_branch.sh"
   pushf = push --force-with-lease'
