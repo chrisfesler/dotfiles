@@ -41,6 +41,8 @@
 [core]
     excludesfile = /Users/cfesler/.gitignore_global
     pager = delta
+	untrackedcache = true
+	fsmonitor = true
 
 [interactive]
     diffFilter = delta --color-only

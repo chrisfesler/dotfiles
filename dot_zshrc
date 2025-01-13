@@ -22,7 +22,6 @@ plugins=(
   you-should-use
   z
   zsh-autosuggestions
-  zsh-bat
   zsh-eza
   zsh-syntax-highlighting
 )
@@ -35,17 +34,24 @@ source $HOME/.zshenv
 export oak="$HOME/src/nuts/oak" # convenience on the CLI
 export EDITOR=nvim
 
+# set up bat
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias cat='bat'
+alias pcat='bat --plain'
+
 alias oak='cd "$oak"'
 alias vim='nvim'
 alias vi='nvim'
+
 alias cm='chezmoi'
 alias cme='chezmoi edit'
 alias cmez="chezmoi edit ${HOME}/.zshrc"
 alias cmcd='cd "$(chezmoi source-path)"'
+
 alias ds="$oak/tools/localdev/docker_stop.sh"
 alias de="$oak/tools/localdev/docker_ensure.sh"
-alias '?'='bc -le'
-alias be='bundle exec'
+
+alias '?'='bc -le' # quick & dirty calculator
 
 # git aliases
 alias g=git
@@ -161,3 +167,6 @@ type starship_zle-keymap-select >/dev/null || \
     eval "$(starship init zsh)"
   }
 
+
+# Added by Windsurf
+export PATH="/Users/cfesler/.codeium/windsurf/bin:$PATH"

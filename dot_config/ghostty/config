@@ -1,0 +1,37 @@
+# ghostty +show-config --default --docs
+# ghostty +list-themes
+
+font-family                    = Fira Code
+font-family                    = Fira Code Retina
+
+font-feature                   = -calt
+font-feature                   = -liga
+font-feature                   = -dlig
+font-feature                   = ss05
+
+font-size                      = 16
+window-inherit-font-size       = true
+
+# Look and Feel
+adjust-cursor-thickness        = 3
+adjust-underline-position      = 3
+bold-is-bright                 = true
+link-url                       = true
+mouse-hide-while-typing        = true
+theme                          = dark:catppuccin-mocha,light:catppuccin-macchiato
+
+# Other
+clipboard-paste-protection     = true
+clipboard-trim-trailing-spaces = true
+copy-on-select                 = true
+macos-auto-secure-input        = true
+macos-secure-input-indication  = true
+scrollback-limit               = 9600
+shell-integration              = zsh
+shell-integration-features     = no-cursor,sudo,title
+
+# Key bindings
+keybind                        = super+shift+enter=new_split:auto
+keybind                        = super+shift+i=inspector:toggle
+keybind                        = super+shift+r=reload_config
+keybind                        = super+t=new_tab
