@@ -70,5 +70,6 @@
 	enabled = true
 [maintenance]
 	repo = /Users/cfesler/src/nuts/oak
+	repo = /Users/cfesler/.local/share/chezmoi
 [init]
 	defaultBranch = main
