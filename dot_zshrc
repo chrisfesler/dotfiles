@@ -40,7 +40,7 @@ if [[ -f "$ZSH/oh-my-zsh.sh" ]]; then
     zsh-syntax-highlighting
   )
 
-  unalias llm
+
   source "$ZSH/oh-my-zsh.sh"
   fpath+=("${ZSH_CUSTOM:-${ZSH:-$HOME/.oh-my-zsh}/custom}/plugins/zsh-completions/src")
 else
@@ -57,6 +57,10 @@ bindkey -M vicmd v edit-command-line
 # Aliases and tools
 export oak="$HOME/src/nuts/oak"
 alias oak='cd "$oak"'
+
+if alias llm &>/dev/null; then
+  unalias llm
+fi
 
 if command -v nvim >/dev/null; then
   export EDITOR=nvim
@@ -148,6 +152,14 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # fnm
 command -v fnm >/dev/null && eval "$(fnm env --use-on-cd)"
+
+# asdf
+if command -v asdf >/dev/null; then
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+  fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+  autoload -Uz compinit && compinit
+  . ~/.asdf/plugins/java/set-java-home.zsh
+fi
 
 # Shell-GPT integration
 if command -v sgpt >/dev/null; then
