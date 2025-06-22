@@ -183,8 +183,8 @@ if command -v starship >/dev/null; then
   type starship_zle-keymap-select >/dev/null || eval "$(starship init zsh)"
 fi
 
-# atuin
 command -v atuin >/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
+command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)"
 
 # API keys
 if [[ -d "$HOME/secrets" ]]; then
@@ -192,3 +192,5 @@ if [[ -d "$HOME/secrets" ]]; then
     [[ -f $f ]] && source "$f"
   done
 fi
+alias claude="/Users/cfesler/.claude/local/claude"
+
